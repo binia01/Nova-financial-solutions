@@ -47,3 +47,27 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+
+## Key findings from the EDA
+1. Headline characteristics
+    - Headlines are generally concise. Average length: TODO (e.g., ~65 characters).
+    - Distribution is slightly right-skewed (most headlines are short; a few are long/descriptive).
+
+2. Publisher activity
+    - A small number of publishers dominate the dataset. Top publishers (examples):
+      - Paul Quintaro
+      - Lisa Levin
+      - Benzinga Newsdesk
+      - Charles Gross
+      - Monica Gerson
+    - This suggests most content originates from a few major newswires.
+
+3. Temporal patterns
+    - Publication volume follows a weekly cycle (peak on Tuesday, Wednesday and Friday, drop on Monday, Thursday and weekends).
+
+4. Content Themes
+   - A preliminary analysis of word frequency in headlines shows that the most common terms include "stock", "market", "company", "shares", "price", and "target", which is consistent with the financial nature of the dataset.
+
+## Next steps
+- Quantitative analysis using pynance and TaLib
+- Integrate with stock price data for correlation and time-series analysis.
