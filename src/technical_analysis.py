@@ -30,11 +30,20 @@ def add_technical_indicators(stock_df: pd.DataFrame) -> pd.DataFrame:
     Add common technical indicators to OHLCV stock data grouped by ticker.
     """
     print("Calculating technical indicators...")
+
+    # Define the lambda function
+    def calculate_and_reattach_ticker(group):
+        ticker = group['Ticker'].iloc[0]  # Get the ticker name for this group
+        # Drop the ticker column for calculation
+        indicators_df = _calculate_for_group(group.drop(columns=['Ticker']))
+        # Re-attach the ticker column to the result
+        indicators_df['Ticker'] = ticker
+        return indicators_df
     
     df = (
         stock_df
         .groupby('Ticker', group_keys=False)
-        .apply(lambda g: _calculate_for_group(g.drop(columns=['Ticker'])))
+        .apply(calculate_and_reattach_ticker)
     )
 
 
