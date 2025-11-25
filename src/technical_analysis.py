@@ -52,3 +52,25 @@ def add_technical_indicators(stock_df: pd.DataFrame) -> pd.DataFrame:
 
     print("Technical indicators added successfully.")
     return df
+
+def add_daily_returns(stock_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Calculates the daily percentage change in the 'Close' price.
+
+    Args:
+        stock_df (pd.DataFrame): DataFrame with stock data, including a 'Ticker' column.
+
+    Returns:
+        pd.DataFrame: The DataFrame with an added 'daily_return' column.
+    """
+    print("Calculating daily stock returns...")
+    # Calculate percentage change on the 'Close' price for each stock group
+    stock_df['daily_return'] = stock_df.groupby('Ticker')['Close'].pct_change()
+    
+    # It's also useful to calculate the next day's return for predictive analysis
+    stock_df['next_day_return'] = stock_df.groupby('Ticker')['daily_return'].shift(-1)
+    
+    # Drop rows with NaN values created by pct_change() and shift()
+    stock_df.dropna(subset=['daily_return', 'next_day_return'], inplace=True)
+    
+    return stock_df

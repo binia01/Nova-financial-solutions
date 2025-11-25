@@ -2,6 +2,15 @@
 
 A project to analyze the correlation between financial news sentiment and stock price movements. It leverages NLP for sentiment analysis and statistical methods for correlation to surface actionable insights for investment strategies. This repository contains code, notebooks, and documentation for the analysis.
 
+## Key Features
+
+- **Modular & Reusable Code:** All logic is organized into a clean `src` package, promoting maintainability, testability, and reusability.
+- **Data Ingestion & Preparation:** Loads and prepares historical stock price data and raw news data from source files.
+- **Sentiment Analysis:** Implements sentiment scoring for over a million news headlines using `TextBlob`.
+- **Technical Analysis:** Automatically calculates key technical indicators for multiple stocks, including Simple Moving Averages (SMA), Relative Strength Index (RSI), and MACD using `TA-Lib`.
+- **Correlation Analysis:** Merges sentiment and stock data, calculates daily returns, and computes a full correlation matrix to uncover relationships.
+
+
 ## Task 1 — Environment setup & Exploratory Data Analysis (EDA)
 The first phase focuses on:
 - Environment setup: create a reproducible Python environment with version control.
